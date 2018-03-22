@@ -23,7 +23,7 @@ bool Sphere::hit( const Ray &r, double tmin, double tmax, SurfaceHitRecord &rec 
 	//***********************************************
     //*********** WRITE YOUR CODE HERE **************
     //***********************************************
-    double rO = r.origin() - center;
+    Vector3d rO = r.origin() - center;
 	double dRd = dot( r.direction(), r.direction() );
     double dRo = dot( r.direction(), rO);
     double oRo = dot( rO, rO );
@@ -49,12 +49,11 @@ bool Sphere::hit( const Ray &r, double tmin, double tmax, SurfaceHitRecord &rec 
     }
 
 	if ( t < tmin || t > tmax ) return false;
-    double normal = r.origin() + t * r.direction() - center;
-    double magnitude = sqrt( normal.x * normal.x + normal.y * normal.y + normal.z * normal.z ); 
 	// We have a hit -- populat hit record. 
 	rec.t = t;
 	rec.p = r.pointAtParam(t);
-	rec.normal = normal / magnitude; 
+	Vector3d normal = rec.p - center;
+	rec.normal = normal / normal.length(); 
 	rec.mat_ptr = matp;
 	return true;
 
@@ -69,7 +68,7 @@ bool Sphere::shadowHit( const Ray &r, double tmin, double tmax ) const
     //*********** WRITE YOUR CODE HERE **************
     //***********************************************
 
-	double rO = r.origin() - center;
+	Vector3d rO = r.origin() - center;
 	double dRd = dot( r.direction(), r.direction() );
     double dRo = dot( r.direction(), rO);
     double oRo = dot( rO, rO );

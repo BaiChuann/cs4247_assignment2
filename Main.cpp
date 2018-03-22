@@ -120,7 +120,7 @@ int main()
 // Render Scene 1.
 
 	printf( "Render Scene 1...\n" );
-	RenderImage( "out1.png", scene1, reflectLevels1, hasShadow1 );
+	//RenderImage( "img_r0.png", scene1, reflectLevels1, hasShadow1 );
 	printf( "Image completed.\n" );
 
 
@@ -133,7 +133,7 @@ int main()
 // Render Scene 2.
 
 	printf( "Render Scene 2...\n" );
-	RenderImage( "out2.png", scene2, reflectLevels2, hasShadow2 );
+	RenderImage( "img_scene2.png", scene2, reflectLevels2, hasShadow2 );
 	printf( "Image completed.\n" );
 
 
@@ -335,28 +335,21 @@ void DefineScene2( Scene &scene, int imageWidth, int imageHeight )
 	scene.surfacep[0] = new Plane( 0.0, 1.0, 0.0, 0.0, &(scene.material[0]) ); // Horizontal plane.
 	scene.surfacep[1] = new Plane( 1.0, 0.0, 0.0, 0.0, &(scene.material[0]) ); // Left vertical plane.
 	scene.surfacep[2] = new Plane( 0.0, 0.0, 1.0, 0.0, &(scene.material[0]) ); // Right vertical plane.
-	scene.surfacep[3] = new Sphere( Vector3d( 75.0, 10.0, 40.0 ), 10.0, &(scene.material[1]) );
-	scene.surfacep[4] = new Sphere( Vector3d( 100.0, 50.0, 10.0 ), 10.0, &(scene.material[2]) ); 
-
-	// Cube +y face.
+	scene.surfacep[3] = new Sphere( Vector3d( 40.0, 10.0, 75.0 ), 10.0, &(scene.material[1]) );
+	scene.surfacep[4] = new Sphere( Vector3d( 80.0, 50.0, 10.0 ), 10.0, &(scene.material[2]) ); 
 	scene.surfacep[5] = new Sphere( Vector3d( 50.0, 20.0, 50.0 ), 10.0, &(scene.material[3]) ); 
 	scene.surfacep[6] = new Sphere( Vector3d( 25.0, 40.0, 100.0 ), 10.0, &(scene.material[4]) ); 
 
-	// Cube +x face.
 	scene.surfacep[7] = new Sphere( Vector3d( 40.0, 100.0, 70.0 ), 10.0, &(scene.material[0]) ); 
-	scene.surfacep[8] = new Sphere( Vector3d( 80.0, 70.0, 60.0 ), 10.0, &(scene.material[1]) ); 
-
-	// Cube -x face.
+	scene.surfacep[8] = new Sphere( Vector3d( 80.0, 70.0, 60.0 ), 10.0, &(scene.material[2]) ); 
 	scene.surfacep[9] = new Sphere( Vector3d( 10.0, 10.0, 10.0 ), 10.0, &(scene.material[2]) ); 
-	scene.surfacep[10] = new Sphere( Vector3d( 10.0, 80.0, 100.0 ), 10.0, &(scene.material[3]) ); 
+	scene.surfacep[10] = new Sphere( Vector3d( 10.0, 30.0, 800.0 ), 10.0, &(scene.material[3]) ); 
 
-	// Cube +z face.
 	scene.surfacep[11] = new Triangle( Vector3d( 50.0, 50.0, 40.0 ), Vector3d( 40.0, 50.0, 50.0 ),
 										Vector3d( 50.0, 50.0, 50.0 ), &(scene.material[4]) );
 	scene.surfacep[12] = new Triangle( Vector3d( 50.0, 50.0, 50.0 ), Vector3d( 40.0, 50.0, 50.0 ),
 										Vector3d( 50.0, 30.0, 50.0 ), &(scene.material[4]) );
 
-	// Cube -z face.
 	scene.surfacep[13] = new Triangle( Vector3d( 50.0, 50.0, 50.0 ), Vector3d( 50.0, 30.0, 50.0 ),
 										Vector3d( 50.0, 50.0, 40.0 ), &(scene.material[4]) );
 	scene.surfacep[14] = new Triangle( Vector3d( 50.0, 50.0, 40.0 ), Vector3d( 50.0, 30.0, 50.0 ),

@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="assign2"
 	ProjectGUID="{FD755756-C5BC-4780-A58D-07ABC9E7A9AF}"
+	RootNamespace="assign2"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>

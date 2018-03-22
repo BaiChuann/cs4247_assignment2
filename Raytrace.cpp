@@ -117,18 +117,13 @@ Color Raytrace::TraceRay( const Ray &ray, const Scene &scene,
 	Color result( 0.0f, 0.0f, 0.0f );	// The result will be accumulated here.
 
 
-	////////////////////////////////////
-	result = nearestHitRec.mat_ptr->k_d; // REMOVE THIS LINE AFTER YOU HAVE FINISHED CODE BELOW.
-	////////////////////////////////////
-
-
 // Add to result the phong lighting contributed by each point light source.
 // Compute shadow if hasShadow is true.
 
     //***********************************************
     //*********** WRITE YOUR CODE HERE **************
 	//***********************************************
-	Vector3d intersection = nearestHitRec.p
+	Vector3d intersection = nearestHitRec.p;
 	for ( int i = 0; i < scene.numPtLights; i++ )
 	{
 		PointLightSource currentLight = scene.ptLight[i];
@@ -146,9 +141,8 @@ Color Raytrace::TraceRay( const Ray &ray, const Scene &scene,
 			}
 		}
 		if ( !isShadowHit ) {
-			result += computePhongLighting(L, N, V, nearestHitRec.mat_ptr, currentLight);
+			result += computePhongLighting(L, N, V, *nearestHitRec.mat_ptr, currentLight);
 		}
-		
 	}
 
 
@@ -175,5 +169,5 @@ Color Raytrace::TraceRay( const Ray &ray, const Scene &scene,
 	}
 	Vector3d refDir = mirrorReflect(V, N);
 	Ray refRay(intersection, refDir);
-	return result + nearestHitRec.mat_ptr.k_rg * TraceRay(refRay, scene, reflectLevels - 1, hasShadow);
+	return result + nearestHitRec.mat_ptr->k_rg * TraceRay(refRay, scene, reflectLevels - 1, hasShadow);
 }
